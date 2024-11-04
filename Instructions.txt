@@ -1,0 +1,43 @@
+➜  git clone https://github.com/AzureAD/microsoft-authentication-library-f
+➜  cd microsoft-authentication-library-for-js
+➜  cd samples/msal-react-samples
+➜  msal-react-samples git:(dev) ls
+b2c-sample          react-router-sample typescript-sample
+nextjs-sample       tsconfig.json
+➜  msal-react-samples git:(dev) cp -r nextjs-sample ~/source/entra
+➜  msal-react-samples git:(dev) cp tsconfig.json  ~/source/entra/nextjs-sample
+➜  msal-react-samples git:(dev) cd ~/source/entra/nextjs-sample
+
+➜  nextjs-sample code .
+
+https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationMenuBlade/~/Overview/quickStartType~/null/sourceType/Microsoft_AAD_IAM/appId/56288fff-53ce-49d3-a41d-7a4a62a83843/objectId/f4c2c7a2-5744-4948-8262-ebb02a156329/isMSAApp~/false/defaultBlade/Overview/appSignInAudience/AzureADMyOrg/servicePrincipalCreated~/true
+
+Go to Azure Portal; Open EntraID
+Create App Registration
+Name:spa-node-msal-graph
+Single Tenant App Registration
+Get ApplicationID (ClientID)
+Directory (Tenant ID)
+Redirect URI: http://localhost:8080
+
+Update the above copied values in src/authConfig.js
+        clientId: "56288fff-53ce-49d3-a41d-7a4a62a83843" -- ClientID
+        authority: "https://login.microsoftonline.com/95ad3010-8850-495e-afec-b456e367d7cf", --TenantID
+
+You must have the the NPM. Install the dependencies with the following command
+➜  nextjs-sample npm install
+
+Run the application in development mode. By default, the application listens on port 3000. You can change the port with --p <portnumber>
+➜  nextjs-sample npm run dev -- -p 8080
+> next-js-msal-react-sample@0.1.0 dev
+> next dev -p 8080
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:8080
+
+ ✓ Starting...
+ ✓ Ready in 3.5s
+
+
+Open Incognito Window and point to http://localhost:8080
+For popup authentication, allow popup on browser for https://localhost:8080
